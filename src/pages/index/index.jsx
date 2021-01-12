@@ -1,20 +1,31 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from '@tarojs/components'
+import { View, Text, Button } from '@tarojs/components'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
-import { AtNavBar,AtButton  } from 'taro-ui'
+import { CuButton } from "taro-color-ui";
 
+import Request from '../../utils/request'
 import { store } from '../../store'
 import './index.scss'
-import Test from '../../../component/test/test'
-import Test2 from '../../../component/test2/test2'
-import TabBar from '../../../component/tabBar/index'
+import Home from '../home/index'
+import Order from '../order/index'
+import Cart from '../cart/index'
+import My from '../my/index'
 
 const app = Taro.getApp()
+let tabList = [
+  { title: '首页', icon: 'home', component: Home },
+  { title: '订单', icon: 'order', component: Order },
+  { title: '客服', icon: 'microphone', action: true, path: '/pages/service/index' },
+  { title: '购物车', icon: 'cart', component: Cart },
+  { title: '我的', icon: 'my', component: My },
+]
+let BarColor = 'red'
+let BarBg = 'white'
 export default class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      flag: false
+      current: 0
     }
   }
 
@@ -60,42 +71,56 @@ export default class Index extends Component {
     console.log('用户上拉')
   }
 
-  Move = (e) => {
-    console.log(e)
+  //前往客服
+  toService = (path) => {
+    Taro.navigateTo({
+      url: path
+    })
+  }
+
+  //tabBar切换
+  handleClick = (index) => {
+    console.log(index)
+    this.setState({
+      current: index
+    })
+  }
+
+  //接口实例
+  requert = () => {
+    Request({
+      url: '/search/avatarjson',
+      method: 'GET',
+      data:{},
+    })
   }
 
   render() {
-    let arr = []
-    for (let i = 0; i < 40; i++) {
-      arr.push(i)
-    }
+    let { current } = this.state
+    let Tab = tabList[current].component
     return (
-      <View className='index' catchMove={this.Move}  >
-        <View className='navBar' style={{ height: 42 + store.getState().StatusBar }}>
-          <AtNavBar
-            customStyle={{ paddingTop: store.getState().StatusBar ,background:'red'}}
-            color='#000'
-            fixed
-          >
-            <View className='navBar_title'>全赞</View>
-          </AtNavBar>
+      <View className='index'>
+        <Tab />
+        <View className="barBar_box">
+          <View className={`cu-bar tabbar bg-${BarBg} shadow`}>
+            {tabList.map((item, index) => {
+              if (item.action) {
+                return (
+                  <View key={index} className="action text-gray add-action" onClick={() => this.toService(item.path)}>
+                    <Button className={`cu-btn text-white cuIcon-${item.icon} bg-${BarColor} shadow`}></Button>
+                    {item.title}
+                  </View>
+                )
+              }
+              return (
+                <View key={index} className={`action text-${current == index ? BarColor : 'gray'}`} onClick={() => this.handleClick(index)}>
+                  <View className={`cuIcon-${item.icon}`}></View>
+                  {item.title}
+                </View>
+              )
+            })}
+          </View>
         </View>
-        <AtButton type='primary' onClick={()=>{
-          Taro.navigateTo({
-            url:'../message/index?id=2'
-          })
-        }}>按钮文案</AtButton>
-        <ScrollView
-
-          style='width: 200px; background: red;'
-        >
-          {arr.map((item, index) => {
-            return (<View key={index} style='height: 50px; background: blue;' direction='all'>带走我{index}</View>)
-          })}
-        </ScrollView>
-        <Test />
-        {this.state.flag && <Test2 />}
-        <TabBar/>
       </View>
     )
   }

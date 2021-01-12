@@ -1,8 +1,7 @@
 export default {
   pages: [
     'pages/index/index',
-    'pages/log/index',
-    'pages/message/index'
+    'pages/service/index',
   ],
   window: {
     backgroundTextStyle: 'light',

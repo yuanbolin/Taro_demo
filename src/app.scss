@@ -1,7 +1,39 @@
-@import "~taro-ui/dist/style/index.scss";
-.navBar{
-  position: relative;
-  .navBar_title{
-    color:#ffffff
-  }
+//按需引入taro-color-ui
+@import "~taro-color-ui/dist/style/assets/bg-color.scss";
+@import "~taro-color-ui/dist/style/assets/text.scss";
+@import "~taro-color-ui/dist/style/components/navigation.scss";
+@import "~taro-color-ui/dist/style/components/bar.scss";
+@import "~taro-color-ui/dist/style/components/icon.scss";
+
+
+//拓展项目图标库
+@font-face {
+  font-family: 'iconfont';  /* project id 2319807 */
+  src: url('//at.alicdn.com/t/font_2319807_xne9lwq6o7b.eot');
+  src: url('//at.alicdn.com/t/font_2319807_xne9lwq6o7b.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2319807_xne9lwq6o7b.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2319807_xne9lwq6o7b.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2319807_xne9lwq6o7b.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2319807_xne9lwq6o7b.svg#iconfont') format('svg');
+}
+
+[class*="cuIcon-"] {
+	font-family: "cuIcon","iconfont";
+	font-size: inherit;
+	font-style: normal;
+}
+
+.cuIcon-order:before {
+	content: "\e60d";
+}
+
+.cuIcon-microphone:before {
+	content: "\e678";
+}
+
+.barBar_box{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  left: 0;
 }

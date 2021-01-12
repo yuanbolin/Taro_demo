@@ -1,11 +1,16 @@
+const path = require("path")     //引入node的path模块
 const config = {
-  projectName: 'myApp',
+  projectName: '全赞',
   date: '2020-12-25',
   designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2
+  },
+  alias:{  //目录别名
+    '@/CuNavigation': path.resolve(__dirname, '..', 'component/cu-custom/index'),
+    '@/global': path.resolve(__dirname, '..', 'src/actions/global'),
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
