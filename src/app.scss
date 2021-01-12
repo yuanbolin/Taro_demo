@@ -5,6 +5,9 @@
 @import "~taro-color-ui/dist/style/components/bar.scss";
 @import "~taro-color-ui/dist/style/components/icon.scss";
 
+//群居引入Taro UI
+@import '~taro-ui/dist/style/index.scss'; // 引入组件样式 - 方式一
+
 
 //拓展项目图标库
 @font-face {

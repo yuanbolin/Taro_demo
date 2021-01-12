@@ -4,6 +4,3 @@ let globalData = {
   noConsole: true // 输出日志信息
 }
 
-export default {
-  ...globalData,
-}

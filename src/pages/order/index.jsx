@@ -4,7 +4,6 @@ import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { CuButton } from "taro-color-ui";
 import { CuNavigation } from "@/CuNavigation";
 
-import { store } from '../../store'
 import './index.scss'
 
 const app = Taro.getApp()

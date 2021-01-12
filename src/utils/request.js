@@ -1,7 +1,6 @@
 import Taro from '@tarojs/taro'
 import { baseUrl, noConsole } from './common'
 
-
 export default (options = { method: 'GET', data: {} }) => {
   if (!noConsole) {
     console.log(`${new Date().toLocaleString()}【 M=${options.url} 】P=${JSON.stringify(options.data)}`)

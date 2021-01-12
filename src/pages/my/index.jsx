@@ -4,7 +4,6 @@ import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { CuButton } from "taro-color-ui";
 import { CuNavigation } from "@/CuNavigation";
 
-import { store } from '../../store'
 import './index.scss'
 
 const app = Taro.getApp()
@@ -45,7 +44,7 @@ export default class Index extends Component {
   render() {
     return (
       <View className='index'>
-  <CuNavigation isBack={false} color="#fff" bgColor="linear-gradient(45deg, #D43f3b, #Ec008c)">
+        <CuNavigation isBack={false} color="#fff" bgColor="linear-gradient(45deg, #D43f3b, #Ec008c)">
           我的
 </CuNavigation>
       </View>

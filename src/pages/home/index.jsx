@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { CuNavigation } from "@/CuNavigation";
 
-import { store } from '../../store'
 import './index.scss'
 import Test from '../../../component/test/test'
 import Test2 from '../../../component/test2/test2'
@@ -64,10 +63,6 @@ export default class Index extends Component {
   }
 
   render() {
-    let arr = []
-    for (let i = 0; i < 40; i++) {
-      arr.push(i)
-    }
     return (
       <View className='index' catchMove={this.Move}  >
         <CuNavigation isBack={false} color="#fff" bgColor="linear-gradient(45deg, #D43f3b, #Ec008c)">
@@ -75,6 +70,30 @@ export default class Index extends Component {
 </CuNavigation>
         <Test />
         {this.state.flag && <Test2 />}
+        <View className='at-article'>
+          <View className='at-article__h1'>
+            这是一级标题这是一级标题
+  </View>
+          <View className='at-article__info'>
+            2017-05-07&nbsp;&nbsp;&nbsp;这是作者
+  </View>
+          <View className='at-article__content'>
+            <View className='at-article__section'>
+              <View className='at-article__h2'>这是二级标题</View>
+              <View className='at-article__h3'>这是三级标题</View>
+              <View className='at-article__p'>
+                这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本落。这是文本段落。1234567890123456789012345678901234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      </View>
+              <View className='at-article__p'>
+                这是文本段落。这是文本段落。
+      </View>
+              <Image
+                className='at-article__img'
+                src='https://jdc.jd.com/img/400x400'
+                mode='widthFix' />
+            </View>
+          </View>
+        </View>
       </View>
     )
   }
