@@ -1,10 +1,13 @@
 //按需引入taro-color-ui
-@import "~taro-color-ui/dist/style/assets/bg-color.scss";
-@import "~taro-color-ui/dist/style/assets/text.scss";
-@import "~taro-color-ui/dist/style/components/navigation.scss";
-@import "~taro-color-ui/dist/style/components/bar.scss";
-@import "~taro-color-ui/dist/style/components/icon.scss";
-
+// @import "~taro-color-ui/dist/style/assets/bg-color.scss";
+// @import "~taro-color-ui/dist/style/assets/text.scss";
+// @import "~taro-color-ui/dist/style/components/navigation.scss";
+// @import "~taro-color-ui/dist/style/components/bar.scss";
+// @import "~taro-color-ui/dist/style/components/icon.scss";
+// @import "~taro-color-ui/dist/style/index.scss";
+ @import "../colorui/animation.scss";
+ @import "../colorui/main.scss";
+ @import "../colorui/icon.scss";
 //群居引入Taro UI
 @import '~taro-ui/dist/style/index.scss'; // 引入组件样式 - 方式一
 

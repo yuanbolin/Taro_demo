@@ -47,7 +47,7 @@ export default class Index extends Component {
         <CuNavigation isBack={false} color="#fff" bgColor="linear-gradient(45deg, #D43f3b, #Ec008c)">
           订单
 </CuNavigation>
-
+        <CuButton onClick={() => Taro.navigateTo({ url: '/pages/order/cuList/index' })}>索引列表</CuButton>
       </View>
     )
   }
