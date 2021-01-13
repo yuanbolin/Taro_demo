@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView } from '@tarojs/components'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
-import { CuTag } from "taro-color-ui";
+import { AtCheckbox } from 'taro-ui'
 import { CuNavigation } from "@/CuNavigation";
 
 import './index.scss'
@@ -15,7 +15,26 @@ export default class Index extends Component {
       listCurID: '',
       list: [],
       listCur: '',
+      checkedList: ['list1']
     }
+    this.checkboxOption = [{
+      value: 'list1',
+      label: 'iPhone X',
+      desc: '部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。'
+    }, {
+      value: 'list2',
+      label: 'HUAWEI P20'
+    }, {
+      value: 'list3',
+      label: 'OPPO Find X',
+      desc: '部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。',
+      disabled: true
+    }, {
+      value: 'list4',
+      label: 'vivo NEX',
+      desc: '部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。',
+      disabled: true
+    }]
   }
 
   $instance = getCurrentInstance()
@@ -71,7 +90,7 @@ export default class Index extends Component {
 
   //获取文字信息
   getCur = (e) => {
-    console.log('getCur',e)
+    console.log('getCur', e)
     let { list } = this.state
     this.setState({
       listCur: list[e.target.id],
@@ -80,12 +99,13 @@ export default class Index extends Component {
   }
 
   setCur = (e) => {
-    console.log('setCur',e)
+    console.log('setCur', e)
     let { listCur } = this.state
     this.setState({
       listCur,
       hidden: true
     })
+
   }
 
   //滑动选择Item
@@ -114,7 +134,7 @@ export default class Index extends Component {
 
   //触发结束选择
   tEnd = (e) => {
-    console.log('tEnd',e)
+    console.log('tEnd', e)
     let { listCur } = this.state
     this.setState({
       hidden: true,
@@ -139,7 +159,11 @@ export default class Index extends Component {
     }
   }
 
-
+  handleChange(value) {
+    this.setState({
+      checkedList: value
+    })
+  }
 
   render() {
     let { hidden, list, listCur, listCurID } = this.state
@@ -149,41 +173,26 @@ export default class Index extends Component {
           索引列表
 </CuNavigation>
         <View>
-          <View className="cu-bar bg-white search fixed">
-            <View className="search-form round">
-              <text className="cuIcon-search"></text>
-              <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
-            </View>
-            <View className="action">
-              <button className="cu-btn bg-gradual-green shadow-blur round">搜索</button>
-            </View>
-          </View>
           <ScrollView scroll-y className="indexes" scrollIntoView={`indexes-${listCurID}`} style={{ height: 'calc(100vh - 50px)' }}
             scrollWithAnimation="true" enableBackToTop="true">
             {list.map((item, index) => {
               return (
                 <View className={`indexItem-${item}`} id={`indexes-${item}`} key={index}>
                   <View className="padding">{item}</View>
-                  <View className="cu-list menu-avatar no-padding">
-                    <View className="cu-item">
-                      <View className="cu-avatar round lg">{item}</View>
-                      <View className="content">
-                        <View className="text-grey">{item}<text className="text-abc">{list[0]}</text>君</View>
-                        <View className="text-gray text-sm">
-                          有2个主子需要伺候
-								</View>
-                      </View>
-                    </View>
-                  </View>
+                  <AtCheckbox
+                    options={this.checkboxOption}
+                    selectedList={this.state.checkedList}
+                    onChange={this.handleChange.bind(this)}
+                  />
                 </View>
               )
             })}
           </ScrollView>
           <View className="indexBar" style={{ height: 'calc(100vh - 50px)' }}>
-            <View className="indexBar-box" catchMove  onTouchStart={this.tStart} onTouchEnd={this.tEnd} onTouchMove={this.tMove}>
+            <View className="indexBar-box" catchMove onTouchStart={this.tStart} onTouchEnd={this.tEnd} onTouchMove={this.tMove}>
               {list.map((item, index) => {
                 return (
-                  <View className="indexBar-item" style={{fontSize:'16px',lineHeight:1}}  key={index} id={`${index}`} onTouchStart={this.getCur} onTouchEnd={this.setCur}>
+                  <View className="indexBar-item" style={{ fontSize: '16px', lineHeight: 1 }} key={index} id={`${index}`} onTouchStart={this.getCur} onTouchEnd={this.setCur}>
                     { item}
                   </View>
                 )
