@@ -2,7 +2,8 @@ export default {
   pages: [
     'pages/index/index',
     'pages/service/index',
-    'pages/order/cuList/index',
+    'pages/order/cuIndexes/index',
+    'pages/order/taroIndexes/index',
   ],
   window: {
     backgroundTextStyle: 'light',

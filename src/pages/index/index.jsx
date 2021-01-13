@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, Button } from '@tarojs/components'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
-import { CuButton } from "taro-color-ui";
 
 import Request from '../../utils/request'
-import { store } from '../../store'
 import './index.scss'
 import Home from '../home/index'
 import Order from '../order/index'
