@@ -5,9 +5,9 @@
 // @import "~taro-color-ui/dist/style/components/bar.scss";
 // @import "~taro-color-ui/dist/style/components/icon.scss";
 // @import "~taro-color-ui/dist/style/index.scss";
- @import "../colorui/animation.scss";
- @import "../colorui/main.scss";
- @import "../colorui/icon.scss";
+@import "./colorui/animation.scss";
+@import "./colorui/main.scss";
+@import "./colorui/icon.scss";
 //群居引入Taro UI
 @import '~taro-ui/dist/style/index.scss'; // 引入组件样式 - 方式一
 

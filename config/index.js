@@ -9,7 +9,7 @@ const config = {
     828: 1.81 / 2
   },
   alias:{  //目录别名
-    '@/CuNavigation': path.resolve(__dirname, '..', 'component/cu-custom/index'),
+    '@/CuNavigation': path.resolve(__dirname, '..', 'src/component/cu-custom/index'),
     '@/global': path.resolve(__dirname, '..', 'src/actions/global'),
   },
   sourceRoot: 'src',
